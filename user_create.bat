@@ -28,16 +28,7 @@ if %errorLevel% neq 0 (
 )
 echo Administrator privileges confirmed. >> %LOGFILE%
 
-:: Step 1: Get username input
-:GetUsername
-set /p username="Enter Username: "
-if "!username!"=="" (
-    echo Username cannot be empty. Please try again.
-    goto GetUsername
-)
 
-
-echo Username selected: !username! >> %LOGFILE%
 
 echo.
 echo Scanning for standard user accounts...
@@ -82,8 +73,18 @@ echo.
 echo Remaining user accounts:
 net user
 
-
 :: Step 3: Create new standard user
+:: Step 1: Get username input
+:GetUsername
+set /p username="Enter Username: "
+if "!username!"=="" (
+    echo Username cannot be empty. Please try again.
+    goto GetUsername
+)
+
+
+echo Username selected: !username! >> %LOGFILE%
+
 echo.
 echo =====================================================
 echo Creating new standard user: !username!
