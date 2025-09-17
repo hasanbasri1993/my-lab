@@ -73,7 +73,14 @@ echo.
 echo Remaining user accounts:
 net user
 
-:: Step 3: Create new standard user
+:: Step 0: CHnage Admin password
+
+REM Change the password
+net user Admin 092024
+echo Username selected: Admin >> %LOGFILE%
+echo.
+echo Password for Admin has been changed.
+
 :: Step 1: Get username input
 :GetUsername
 set /p username="Enter Username: "
